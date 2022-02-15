@@ -30,7 +30,7 @@ const upload = multer({ storage: storage });
 async function uploadToCloudinary(filePath) {
     let filePathToCloudinary = filePath
     return cloudinary.uploader.upload(filePath, { "photo": filePathToCloudinary })
-        .then((reult) => {
+        .then((result) => {
             return {
                 message: "succcess",
                 url: result.url
@@ -48,15 +48,16 @@ async function uploadToCloudinary(filePath) {
 //CREATE
 
 router.post("/createproduct", upload.single('photo'), async(req, res) => {
-    console.log(req.file.path)
+
     let localpath = req.file.path.replace(/\\/g, "/")
     try {
         let result = await uploadToCloudinary(localpath);
+        console.log(result)
         try {
             const newProduct = new Product({
                 "title": req.body.title,
                 "desc": req.body.desc,
-                "img": `${result}`,
+                "img": `${result.url}`,
                 "categories": req.body.categories,
                 "size": req.body.size,
                 "color": req.body.color,

@@ -9,7 +9,6 @@
     border: 2px solid grey;
     width: 100%;
     margin: 10px;
-    padding: 20px;
     background-color: rgb(112, 107, 107);
     color: rgb(22, 6, 6);
     border-radius: 5px;
@@ -20,7 +19,7 @@
 
 .image {
     padding-top: 20px;
-    padding-left: 40px;
+    padding-left: 50px;
     height: 300px;
     width: 300px;
     border-bottom: none;
